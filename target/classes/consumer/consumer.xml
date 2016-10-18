@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="consumer" class="com.aliyun.openservices.ons.api.bean.ConsumerBean"
+          init-method="start" destroy-method="shutdown">
+        <property name="properties">
+            <map>
+                <entry key="ConsumerId" value="CID-MUYU-TEST"/> <!-- CID,请替换 -->
+                <entry key="AccessKey" value="KNW9MdJpMy2fIpt8"/> <!-- ACCESS_KEY,请替换 -->
+                <entry key="SecretKey" value="7OP88lqSGO1FgCWQTcW2BMxIpOYhxq"/><!-- SECRET_KEY,请替换 -->
+                <entry key="ONSAddr" value="http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet"/>
+            </map>
+        </property>
+
+        <property name="subscriptionTable">
+            <map>
+                <entry value-ref="messageListener">
+                    <key>
+                        <bean class="com.aliyun.openservices.ons.api.bean.Subscription">
+                            <property name="topic" value="MUYU-TEST"/> <!-- Topic,请替换 -->
+                            <property name="expression" value="*"/><!-- MessageType名: 多个messageType 用 “||”分割 -->
+                        </bean>
+                    </key>
+                </entry>
+            </map>
+
+        </property>
+    </bean>
+
+    <!-- 消息处理器 -->
+    <bean id="messageListener" class="com.alibaba.ons.message.example.consumer.MessageListenerImpl"/>
+</beans>

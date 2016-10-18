@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="producer" class="com.aliyun.openservices.ons.api.bean.ProducerBean"
+        init-method="start" destroy-method="shutdown">
+        <property name="properties">
+            <map>
+                <entry key="ProducerId" value="PID_ONS_TEST_PUBLIC" /> <!-- 消息发送方groupId -->
+                <entry key="AccessKey" value="4iusKS7VJRvDQlb5" /> <!-- 消息发送方groupId -->
+                <entry key="SecretKey" value="YMrK9e3psSSmFJTx3CsoUFLl8qsEqj" /> <!-- 消息发送方groupId -->
+                <entry key="ONSAddr" value="http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet"/>
+                <entry key="MQType" value="METAQ" /> <!-- 消息发送方groupId -->
+                <!--发送超时时间-->
+                <!--<entry key="SendMsgTimeoutMillis" value="9000" /> -->
+            </map>
+        </property>
+    </bean>
+</beans>

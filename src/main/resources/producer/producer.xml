@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="producer" class="com.aliyun.openservices.ons.api.bean.ProducerBean"
+        init-method="start" destroy-method="shutdown">
+        <property name="properties">
+            <map>
+                <entry key="ProducerId" value="XXX" /> <!-- PID,请替换 -->
+                <entry key="AccessKey" value="XXX" /> <!-- ACCESS_KEY,请替换 -->
+                <entry key="SecretKey" value="XXX" /> <!-- SECRET_KEY,请替换 -->
+                <entry key="ONSAddr" value="http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet"/>
+            </map>
+        </property>
+    </bean>
+</beans>

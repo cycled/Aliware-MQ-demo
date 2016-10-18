@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="consumer" class="com.aliyun.openservices.ons.api.bean.ConsumerBean"
+        init-method="start" destroy-method="shutdown">
+        <property name="properties">
+            <map>
+                <entry key="ConsumerId" value="s-sql-test" /> <!-- 订阅方GroupId -->
+                <entry key="AccessKey" value="BfqbMqEc4gYksKue" /> <!-- 消息发送方groupId -->
+                <entry key="SecretKey" value="zBQILPqFG8q08vbdeXtHks4H5D0cWW" />
+            </map>
+        </property>
+
+        <property name="subscriptionTable">
+            <map>
+                <entry value-ref="messageListener">
+                    <key>
+                        <bean class="com.aliyun.openservices.ons.api.bean.SubscriptionExt" factory-method="header">
+                            <constructor-arg index="0" value="ons-topic-sql"/>
+                            <constructor-arg index="1">
+                            <value><![CDATA[TAG='NM-ons-test' and name='jixiang.jjx']]></value>
+                            </constructor-arg>
+                        </bean>
+                    </key>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    
+    <!-- 消息处理器 -->
+    <bean id="messageListener" class="com.alibaba.ons.message.example.consumer.MessageListenerImpl" />
+</beans>
