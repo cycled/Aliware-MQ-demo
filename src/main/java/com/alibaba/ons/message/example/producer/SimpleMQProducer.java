@@ -15,6 +15,7 @@
  */
 package com.alibaba.ons.message.example.producer;
 
+import com.alibaba.ons.message.example.MqConfig;
 import com.aliyun.openservices.ons.api.*;
 
 import java.util.Date;
@@ -24,30 +25,23 @@ import java.util.Properties;
  * @author jixiang.jjx
  */
 public class SimpleMQProducer {
-    /**
-     * 启动测试之前请替换如下 XXX 为您的配置
-     */
-    private static final String TOPIC = "XXX";
-    private static final String PRODUCER_ID = "XXXX";
-    private static final String ACCESS_KEY = "XXX";
-    private static final String SECRET_KEY = "XXX";
-    private static final String TAG = "mq_test_tag";
+
 
     public static void main(String[] args) {
         Properties producerProperties = new Properties();
-        producerProperties.setProperty(PropertyKeyConst.ProducerId, PRODUCER_ID);
-        producerProperties.setProperty(PropertyKeyConst.AccessKey, ACCESS_KEY);
-        producerProperties.setProperty(PropertyKeyConst.SecretKey, SECRET_KEY);
+        producerProperties.setProperty(PropertyKeyConst.ProducerId, MqConfig.PRODUCER_ID);
+        producerProperties.setProperty(PropertyKeyConst.AccessKey, MqConfig.ACCESS_KEY);
+        producerProperties.setProperty(PropertyKeyConst.SecretKey, MqConfig.SECRET_KEY);
         producerProperties.setProperty(PropertyKeyConst.ONSAddr, "http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet");
         Producer producer = ONSFactory.createProducer(producerProperties);
         producer.start();
         System.out.println("Producer Started");
 
         for (int i = 0; i < 10; i++) {
-            Message message = new Message(TOPIC, TAG, "mq send transaction message test".getBytes());
+            Message message = new Message(MqConfig.TOPIC, MqConfig.TAG, "mq send transaction message test".getBytes());
             SendResult sendResult = producer.send(message);
             if (sendResult != null) {
-                System.out.println(new Date() + " Send mq message success! Topic is:" + TOPIC + "msgId is: " + sendResult.getMessageId());
+                System.out.println(new Date() + " Send mq message success! Topic is:" + MqConfig.TOPIC + "msgId is: " + sendResult.getMessageId());
             }
         }
     }
