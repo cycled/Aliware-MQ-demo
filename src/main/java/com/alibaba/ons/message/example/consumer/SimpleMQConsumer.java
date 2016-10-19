@@ -23,7 +23,7 @@ import com.aliyun.openservices.ons.api.PropertyKeyConst;
 import java.util.Properties;
 
 /**
- * @author jixiang.jjx
+ * MQ 接收消息示例 Demo
  */
 public class SimpleMQConsumer {
 

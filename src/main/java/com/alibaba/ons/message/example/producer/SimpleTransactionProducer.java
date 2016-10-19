@@ -11,6 +11,9 @@ import com.aliyun.openservices.ons.api.transaction.TransactionStatus;
 
 import java.util.Properties;
 
+/**
+ * MQ 发送事务消息示例 Demo
+ */
 public class SimpleTransactionProducer {
 
     public static void main(String[] args) {

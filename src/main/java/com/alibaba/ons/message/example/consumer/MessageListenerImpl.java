@@ -23,7 +23,7 @@ import com.aliyun.openservices.ons.api.MessageListener;
 import java.util.Date;
 
 /**
- * @author jixiang.jjx
+ * MQ消息处理类
  */
 public class MessageListenerImpl implements MessageListener {
     @Override

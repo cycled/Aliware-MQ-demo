@@ -5,7 +5,7 @@ import com.aliyun.openservices.ons.api.transaction.LocalTransactionChecker;
 import com.aliyun.openservices.ons.api.transaction.TransactionStatus;
 
 /**
- * Created by jixiang.jjx on 2014/10/15.
+ * MQ 发送事务消息本地Check接口实现类
  */
 public class LocalTransactionCheckerImpl implements LocalTransactionChecker {
 
